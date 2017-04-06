@@ -2,6 +2,34 @@
 Migration
 #########
 
+****************
+Migration helper
+****************
+
+The library ships with a migration helper that you can include in your application to determine the occurrences
+requiring a change.
+
+You can either require the file directly or add it to your ``composer.json``'s ``autoload-dev`` section:
+
+.. code-block:: php
+
+    require __DIR__.'/vendor/kreait/firebase-php/migration-helper.php';
+
+.. code-block:: json
+
+    {
+        "autoload-dev" : {
+            "psr-4": {
+                "Firebase\\": "src/Firebase"
+            },
+            "files": {
+                "./vendor/kreait/firebase-php/migration-helper.php"
+            }
+        }
+    }
+
+
+
 **********
 2.x to 3.x
 **********

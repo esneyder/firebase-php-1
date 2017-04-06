@@ -54,4 +54,5 @@ User Guide
     authentication
     realtime-database
     troubleshooting
+    migration
 

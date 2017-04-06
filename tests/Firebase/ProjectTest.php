@@ -1,15 +1,15 @@
 <?php
 
-namespace Tests\Firebase\V3;
+namespace Tests\Firebase;
 
 use Firebase\Auth\Token\Handler;
 use Firebase\Database;
+use Firebase\Project;
 use Firebase\ServiceAccount;
-use Firebase\V3\Firebase;
 use GuzzleHttp\Psr7\Uri;
 use Tests\FirebaseTestCase;
 
-class FirebaseTest extends FirebaseTestCase
+class ProjectTest extends FirebaseTestCase
 {
     /**
      * @var ServiceAccount|\PHPUnit_Framework_MockObject_MockObject
@@ -27,7 +27,7 @@ class FirebaseTest extends FirebaseTestCase
     private $tokenHandler;
 
     /**
-     * @var Firebase
+     * @var Project
      */
     private $firebase;
 
@@ -37,14 +37,14 @@ class FirebaseTest extends FirebaseTestCase
         $this->databaseUri = new Uri('https://database-uri.tld');
         $this->tokenHandler = new Handler('projectid', 'clientEmail', 'privateKey');
 
-        $this->firebase = new Firebase($this->serviceAccount, $this->databaseUri, $this->tokenHandler);
+        $this->firebase = new Project($this->serviceAccount, $this->databaseUri, $this->tokenHandler);
     }
 
     public function testWithDatabaseUri()
     {
         $firebase = $this->firebase->withDatabaseUri('https://some-other-uri.tld');
 
-        $this->assertInstanceOf(Firebase::class, $firebase);
+        $this->assertInstanceOf(Project::class, $firebase);
         $this->assertNotSame($this->firebase, $firebase);
     }
 
@@ -58,7 +58,7 @@ class FirebaseTest extends FirebaseTestCase
     public function testAsUserWithClaims()
     {
         $firebase = $this->firebase->asUserWithClaims('uid');
-        $this->assertInstanceOf(Firebase::class, $firebase);
+        $this->assertInstanceOf(Project::class, $firebase);
         $this->assertNotSame($this->firebase, $firebase);
     }
 

@@ -5,7 +5,6 @@ namespace Firebase;
 use Firebase\Auth\Token\Handler as TokenHandler;
 use Firebase\Exception\InvalidArgumentException;
 use Firebase\Exception\LogicException;
-use Firebase\V3\Firebase;
 use Google\Auth\CredentialsLoader;
 use GuzzleHttp\Psr7;
 use Psr\Http\Message\UriInterface;
@@ -74,7 +73,7 @@ final class Factory
         $databaseUri = $this->databaseUri ?? $this->getDatabaseUriFromServiceAccount($serviceAccount);
         $tokenHandler = $this->tokenHandler ?? $this->getDefaultTokenHandler($serviceAccount);
 
-        return new Firebase($serviceAccount, $databaseUri, $tokenHandler);
+        return new Project($serviceAccount, $databaseUri, $tokenHandler);
     }
 
     private function getDatabaseUriFromServiceAccount(ServiceAccount $serviceAccount): UriInterface

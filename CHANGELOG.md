@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Unrelease
+
+* Removed deprecated components
+* Changed nomenclature
+  * Instead of working with "Firebase instances", we're now working with "Firebase projects". 
+
 ## 2.3.0 - 2017-04-06
 
 * Allow the usage of a custom token handler when creating a new Firebase instance by adding

@@ -1,12 +1,11 @@
 <?php
 
-namespace Firebase\V3;
+namespace Firebase;
 
 use Firebase\Auth\Token\Handler as TokenHandler;
-use Firebase\Database;
 use Firebase\Database\ApiClient;
 use Firebase\Http\Middleware;
-use Firebase\ServiceAccount;
+use Firebase\V3\Auth;
 use Firebase\V3\Auth\CustomToken;
 use Google\Auth\Credentials\ServiceAccountCredentials;
 use Google\Auth\Middleware\AuthTokenMiddleware;
@@ -15,7 +14,7 @@ use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7;
 use Psr\Http\Message\UriInterface;
 
-class Firebase
+class Project
 {
     /**
      * @var ServiceAccount
@@ -49,9 +48,9 @@ class Firebase
      *
      * @param string|UriInterface $databaseUri
      *
-     * @return Firebase
+     * @return Project
      */
-    public function withDatabaseUri($databaseUri): Firebase
+    public function withDatabaseUri($databaseUri): Project
     {
         return new self($this->serviceAccount, Psr7\uri_for($databaseUri), $this->tokenHandler);
     }
@@ -77,9 +76,9 @@ class Firebase
      * @param string $uid
      * @param array $claims
      *
-     * @return Firebase
+     * @return Project
      */
-    public function asUserWithClaims(string $uid, array $claims = []): Firebase
+    public function asUserWithClaims(string $uid, array $claims = []): Project
     {
         return $this->withCustomAuth(new CustomToken($uid, $claims));
     }
@@ -98,7 +97,7 @@ class Firebase
         return $this->tokenHandler;
     }
 
-    private function withCustomAuth(Auth $override): Firebase
+    private function withCustomAuth(Auth $override): Project
     {
         $firebase = new self($this->serviceAccount, $this->databaseUri, $this->tokenHandler);
         $firebase->database = $this->getDatabase()->withCustomAuth($override);

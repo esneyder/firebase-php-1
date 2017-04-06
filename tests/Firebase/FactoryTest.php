@@ -2,14 +2,11 @@
 
 namespace Tests\Firebase;
 
-use Firebase\Auth\Token\Domain\Generator;
-use Firebase\Auth\Token\Domain\Verifier;
 use Firebase\Auth\Token\Handler;
 use Firebase\Exception\LogicException;
 use Firebase\Factory;
-use Firebase\V3\Firebase;
+use Firebase\Project;
 use Google\Auth\CredentialsLoader;
-use Lcobucci\JWT\Token;
 use Tests\FirebaseTestCase;
 
 class FactoryTest extends FirebaseTestCase
@@ -33,14 +30,14 @@ class FactoryTest extends FirebaseTestCase
     {
         putenv(sprintf('%s=%s', Factory::ENV_VAR, $this->keyFile));
 
-        $this->assertInstanceOf(Firebase::class, (new Factory())->create());
+        $this->assertInstanceOf(Project::class, (new Factory())->create());
     }
 
     public function testItFindsCredentialsFromTheGoogleApplicationCredentialsEnvVar()
     {
         putenv(sprintf('%s=%s', CredentialsLoader::ENV_VAR, $this->keyFile));
 
-        $this->assertInstanceOf(Firebase::class, (new Factory())->create());
+        $this->assertInstanceOf(Project::class, (new Factory())->create());
     }
 
     public function testItThrowsAnExceptionWhenNoCredentialsAreAvailable()
@@ -67,7 +64,7 @@ class FactoryTest extends FirebaseTestCase
             ->withDatabaseUri('http://domain.tld')
             ->create();
 
-        $this->assertInstanceOf(Firebase::class, $factory);
+        $this->assertInstanceOf(Project::class, $factory);
     }
 
     public function testItUsesADefaultTokenHandler()

@@ -12,14 +12,10 @@ applications.
 For support, please use the [issue tracker](https://github.com/kreait/firebase-php/issues/),
 or join the Firebase Community Slack at https://firebase-community.appspot.com and join the #php channel.
 
-- [Documentation](#documentation)
-- [Usage example](#usage-example)
- 
-## Documentation
-
 You can find the documentation at http://firebase-php.readthedocs.io/
 
-- [Requirements](http://firebase-php.readthedocs.io/en/latest/overview.html#requirements)
-- [Installation](http://firebase-php.readthedocs.io/en/latest/overview.html#installation)
-- [Authentication](http://firebase-php.readthedocs.io/en/latest/authentication.html)
-- [Working with the Realtime Database](http://firebase-php.readthedocs.io/en/latest/realtime-database.html)
+- [Requirements](https://firebase-php.readthedocs.io/en/3.0/overview.html#requirements)
+- [Installation](https://firebase-php.readthedocs.io/en/3.0/overview.html#installation)
+- [Authentication](https://firebase-php.readthedocs.io/en/3.0/authentication.html)
+- [Working with the Realtime Database](https://firebase-php.readthedocs.io/en/3.0/realtime-database.html)
+

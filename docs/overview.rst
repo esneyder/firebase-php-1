@@ -44,7 +44,7 @@ project's existing composer.json file:
 
     {
       "require": {
-         "kreait/firebase-php": "^3.0"
+         "kreait/firebase-php": "^3.0@dev"
       }
    }
 
